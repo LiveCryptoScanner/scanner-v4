@@ -21,7 +21,7 @@ import CustomizeStepper from '@/src/features/customize/CustomizeStepper';
 import Scannertable from './Scannertable';
 
 import { setMainHomeButton } from '@/src/features/mainHomeButtonSlice';
-import { selectedMainTab } from '@/src/features/selected-main-tab/selectedMainTab';
+import { selectedMainTab } from '@/src/features/selected-main-tab/selectedMainTabSlice';
 import DownloadIcon from '@mui/icons-material/Download';
 import ShareIcon from '@mui/icons-material/Share';
 
