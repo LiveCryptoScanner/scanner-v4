@@ -7,10 +7,11 @@ const theme1 = createTheme({
     // primary: deepPurple,
     // secondary: amber,
     mode: 'dark',
+    // mode: 'light',
   },
   typography: {
     // Tell MUI what's the font-size on the html element is.
-    htmlFontSize: 19,
+    htmlFontSize: 21,
   },
   shape: {
     // borderRadius: '4%'

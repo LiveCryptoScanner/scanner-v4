@@ -10,11 +10,13 @@ function LinkTab(props) {
   const dispatch = useDispatch();
   // console.log(props);
   return (
-    <Tab
-      component="a"
-      onClick={(e) => dispatch(setSelectedMainTab({newTab: props.label}, e))}
-      {...props}
-    />
+    <Box sx={{boxShadow: 5, noWrap: true}}>
+      <Tab
+        component="a"
+        onClick={(e) => dispatch(setSelectedMainTab({newTab: props.label}, e))}
+        {...props}
+      />
+    </Box>
   );
 }
 
@@ -29,7 +31,7 @@ export default function NavTabs() {
   };
 
   return (
-    <Tabs value={selectedMainTabIndex} onChange={handleChange} aria-label="nav tabs example">
+    <Tabs value={selectedMainTabIndex} onChange={handleChange} aria-label="nav tabs example" sx={{}}>
       <LinkTab label="Trend" />
       <LinkTab label="Price To MA" />
       <LinkTab label="MA Cross" />

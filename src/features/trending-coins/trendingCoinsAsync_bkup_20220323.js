@@ -34,7 +34,6 @@ import TrendingDownOutlinedIcon from '@mui/icons-material/TrendingDownOutlined';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 
 
-
 function abbreviateNumber(value) {
     var newValue = value;
     if (value >= 1000) {
@@ -73,31 +72,13 @@ const TrendingCoins = () => {
             <Table aria-label="simple table">
               <TableHead sx={{ background: tHeadColor}}>
                 <TableRow>
-                  <TableCell  padding="none" sx={{ p: 1, textAlign: 'center' }}>
-                    <Typography>
-                      PAIR
-                    </Typography>
+                  <TableCell padding="none" sx={{ textAlign: 'left', p: 1}}>
+                    <Box component="span" ml={3}>PAIR</Box>
                   </TableCell>
-                  <TableCell padding="none">
-                    <Typography>
-                      TREND
-                    </Typography>
-                  </TableCell>
-                  <TableCell padding="none">
-                    <Typography>
-                      %24H
-                    </Typography>
-                  </TableCell>
-                  <TableCell padding="none">
-                    <Typography>
-                      PRICE
-                    </Typography>
-                  </TableCell>
-                  <TableCell padding="none">
-                    <Typography>
-                      VOLUME
-                    </Typography>
-                  </TableCell>
+                  <TableCell padding="none">TREND</TableCell>
+                  <TableCell padding="none">%24HR</TableCell>
+                  <TableCell padding="none">PRICE</TableCell>
+                  <TableCell padding="none">VOLUME</TableCell>
                 </TableRow>
               </TableHead>
               <TableBody>
@@ -108,12 +89,15 @@ const TrendingCoins = () => {
                     justify="center"
                   >
                     <TableCell padding="none">
-                      <Stack direction="row" justifyContent="center" alignItems="center" spacing={0.3} sx={{padding: 1}}>
-                        <Avatar src="/images/ada.png" sx={{ width: 26, height: 26 }} />
+                      <Box component="span" sx={{ display: 'flex', alignItems: 'center', justifyContent: 'left', flexWrap: 'wrap', p: 1 }}>
+                        <Avatar
+                          src="/images/ada.png"
+                          sx={{ width: 26, height: 26 }}
+                        />
                         <Typography variant="inherit" ml={ 0 }>
                           {row.pair}
                         </Typography>
-                      </Stack>
+                      </Box>
                     </TableCell>
 
                     <TableCell padding="none">
@@ -124,9 +108,8 @@ const TrendingCoins = () => {
                           alignItems: 'center',
                           flexWrap: 'wrap',
                         }}>
-                        {
-                          row.trend >= 0  ? (<TrendingUpOutlinedIcon fontSize="medium" />) :
-                          row.trend < 0 ? (<TrendingDownOutlinedIcon fontSize="medium" />) :
+                        {row.hour >= 0  ? (<TrendingUpOutlinedIcon fontSize="medium" />) :
+                          row.hour < 0 ? (<TrendingDownOutlinedIcon fontSize="medium" />) :
                           (<span></span>)
                         }
                       </Box>

@@ -36,9 +36,9 @@ export default function HomeRow1() {
   }, [dispatch]);
 
   return (
-    <Box sx={[{ border: 0 }]}>
+    <Box>
       <Grid container direction="row" spacing={1}>
-        <Grid item xs={12} md={6} lg={4} sx={{border: 0}}>
+        <Grid item xs={12} md={6} lg={4} sx={{ border: 0 }}>
           <TopBullCoinsAsync />
         </Grid>
         <Grid item xs={12} md={6} lg={4}>

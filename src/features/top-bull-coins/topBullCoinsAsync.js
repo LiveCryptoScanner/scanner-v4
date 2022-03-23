@@ -9,6 +9,9 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import CardActions from '@mui/material/CardActions';
+import Button from '@mui/material/Button';
 import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
 import Container from '@mui/material/Container';
@@ -26,6 +29,7 @@ import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
 import ArrowUpwardOutlinedIcon from '@mui/icons-material/ArrowUpwardOutlined';
 import ArrowDownwardOutlinedIcon from '@mui/icons-material/ArrowDownwardOutlined';
 import ArrowRightAltSharpIcon from '@mui/icons-material/ArrowRightAltSharp';
+import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 
 
 function abbreviateNumber(value) {
@@ -53,84 +57,100 @@ const TopBullCoins = () => {
 
   return (
     <>
-    <Grid container>
-      <Grid item xs={12} sx={{p: 1}}>
-        <TableContainer component={Paper} sx={{ mx: 0, p: 1, border: 0 }}>
-        <Typography variant="subtitle1" gutterBottom sx={{ textAlign:"center" }}>
-          <FontAwesomeIcon icon={faBtc} style={{ marginRight: 8 }} />
-          TOP BULL COINS
-        </Typography>
-          <Table aria-label="simple table">
-            <TableHead sx={{ background: tHeadColor, border: 0}}>
-              <TableRow>
-                <TableCell padding="none" sx={{ textAlign: 'left', p: 1}}>
-                  <Box component="span" ml={3}>PAIR</Box>
-                </TableCell>
-                <TableCell padding="none">PRICE</TableCell>
-                <TableCell padding="none">%24HR</TableCell>
-                <TableCell padding="none">VOLUME</TableCell>
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              {rows.map((row) => (
-                <TableRow
-                  key={row.pair}
-                  sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-                  justify="center"
-                >
-                  <TableCell padding="none">
-                    <Box component="span" sx={{ display: 'flex', alignItems: 'center', justifyContent: 'left', flexWrap: 'wrap', p: 1 }}>
-                      <Avatar
-                        src="/images/ada.png"
-                        sx={{ width: 26, height: 26 }}
-                      />
-                      <Typography variant="inherit" ml={ 0 }>
-                        {row.pair}
-                      </Typography>
-                    </Box>
-                  </TableCell>
-
-                  <TableCell padding="none">
-                    <Box component="span" sx={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap' }}>
-                      <AttachMoneyIcon fontSize="small" />
-                      <Typography variant="inherit" sx={{ mt: 0.3 }}>
-                        {row.price}
-                      </Typography>
-                    </Box>
-                  </TableCell>
-                  <TableCell padding="none" align="center">
-                    <Box component="span"
-                      color={ row.hour > 0 ? theme.palette.success.light : row.hour < 0 ? theme.palette.error.main : theme.palette.secondary.light }
-                      sx={{
-                        display: 'flex',
-                        alignItems: 'center',
-                        flexWrap: 'wrap',
-                      }}>
-                      <Typography variant="inherit" sx={{textAlign: 'center', mt: 0.3}}>
-                        {row.hour}%
-                      </Typography>
-
-                      {row.hour > 0  ? (<ArrowUpwardOutlinedIcon fontSize="small" />) :
-                        row.hour < 0 ? (<ArrowDownwardOutlinedIcon fontSize="small" />) :
-                        (<span></span>)
-                      }
-                    </Box>
+    <Box>
+      <Card sx={{p: 0, pt: 1}}>
+        <CardContent sx={{ p: 0, px: 2 }}>
+          <TableContainer component={Paper} sx={{ mx: 0, p: 0, border: 0 }}>
+            <Typography variant="subtitle1" gutterBottom sx={{ textAlign:"center" }}>
+              <FontAwesomeIcon icon={faBtc} style={{ marginRight: 8 }} />
+              TOP BULL COINS
+            </Typography>
+            <Table aria-label="simple table">
+              <TableHead sx={{ background: tHeadColor}}>
+                <TableRow>
+                  <TableCell padding="none" sx={{ p: 1, textAlign: 'center' }}>
+                    <Typography>
+                      PAIR
+                    </Typography>
                   </TableCell>
                   <TableCell padding="none">
-                    <Box component="span" sx={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap' }}>
-                      <AttachMoneyIcon fontSize="small" />
-                      <Typography variant="inherit" sx={{ mt: 0.3 }}>
-                        {abbreviateNumber(row.volume)}
-                      </Typography>
-                    </Box>
+                    <Typography sx={{}}>
+                      PRICE
+                    </Typography>
+                  </TableCell>
+                  <TableCell padding="none">
+                    <Typography sx={{}}>
+                      %24HR
+                    </Typography>
+                  </TableCell>
+                  <TableCell padding="none">
+                    <Typography sx={{}}>
+                      VOLUME
+                    </Typography>
                   </TableCell>
                 </TableRow>
-              ))}
-            </TableBody>
-          </Table>
-        </TableContainer>
-      </Grid>
-    </Grid>
+              </TableHead>
+              <TableBody>
+                {rows.map((row) => (
+                  <TableRow
+                    key={row.pair}
+                    sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+                    justify="center"
+                  >
+                    <TableCell padding="none">
+                      <Stack direction="row" justifyContent="center" alignItems="center" spacing={0.3} sx={{padding: 1}}>
+                        <Avatar src="/images/ada.png" sx={{ width: 26, height: 26 }} />
+                        <Typography variant="inherit" ml={ 0 }>
+                          {row.pair}
+                        </Typography>
+                      </Stack>
+                    </TableCell>
+
+                    <TableCell padding="none">
+                      <Box component="span" sx={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap' }}>
+                        <AttachMoneyIcon fontSize="small" />
+                        <Typography variant="inherit" sx={{ mt: 0.3 }}>
+                          {row.price}
+                        </Typography>
+                      </Box>
+                    </TableCell>
+                    <TableCell padding="none" align="center">
+                      <Box component="span"
+                        color={ row.hour > 0 ? theme.palette.success.light : row.hour < 0 ? theme.palette.error.main : theme.palette.secondary.light }
+                        sx={{
+                          display: 'flex',
+                          alignItems: 'center',
+                          flexWrap: 'wrap',
+                        }}>
+                        <Typography variant="inherit" sx={{textAlign: 'center', mt: 0.3}}>
+                          {row.hour}%
+                        </Typography>
+
+                        {row.hour > 0  ? (<ArrowUpwardOutlinedIcon fontSize="small" />) :
+                          row.hour < 0 ? (<ArrowDownwardOutlinedIcon fontSize="small" />) :
+                          (<span></span>)
+                        }
+                      </Box>
+                    </TableCell>
+                    <TableCell padding="none">
+                      <Box component="span" sx={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap' }}>
+                        <AttachMoneyIcon fontSize="small" />
+                        <Typography variant="inherit" sx={{ mt: 0.3 }}>
+                          {abbreviateNumber(row.volume)}
+                        </Typography>
+                      </Box>
+                    </TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+          </TableContainer>
+        </CardContent>
+        <CardActions sx={{justifyContent: 'flex-end'}}>
+          <Button size="small" endIcon={<ArrowForwardIosIcon fontSize="small" />}>Details</Button>
+        </CardActions>
+      </Card>
+    </Box>
     </>
   );
 }

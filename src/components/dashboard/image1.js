@@ -1,28 +1,31 @@
 import * as React from 'react';
-import Image from 'next/image';
 import { styled } from '@mui/material/styles';
-import Box from '@mui/material/Box';
-import Paper from '@mui/material/Paper';
-import Grid from '@mui/material/Grid';
-// import img1 from '../../public/images/Bg.png';
-import img1 from '/public/images/Bg.png';
+import Card from '@mui/material/Card';
+import CardHeader from '@mui/material/CardHeader';
+import CardMedia from '@mui/material/CardMedia';
+import CardContent from '@mui/material/CardContent';
+import CardActions from '@mui/material/CardActions';
+import Collapse from '@mui/material/Collapse';
+import Avatar from '@mui/material/Avatar';
+import IconButton from '@mui/material/IconButton';
+import Typography from '@mui/material/Typography';
+import { red } from '@mui/material/colors';
+import FavoriteIcon from '@mui/icons-material/Favorite';
+import ShareIcon from '@mui/icons-material/Share';
+import MoreVertIcon from '@mui/icons-material/MoreVert';
 
-const Item = styled(Paper)(({ theme }) => ({
-  // backgroundColor: theme.palette.mode === 'dark' ? '' : '',
-  // ...theme.typography.body2,
-  // padding: theme.spacing(0),
-  // textAlign: 'center',
-  // color: theme.palette.text.secondary,
-}));
+// import img1 from '/public/images/Bg.png';
 
-export default function BasicGrid() {
+export default function ImageCard() {
   return (
-    <Box sx={[{ flexGrow: 1 }]}>
-      <Grid>
-        <Grid item xs={12} md={12} lg={12}>
-          <Image src={img1} width={1500} />
-        </Grid>
-      </Grid>
-    </Box>
+    <Card sx={{ p: 0, m: 0 }}>
+      <CardMedia
+        component="img"
+        image="/images/Bg.png"
+        height="70"
+        alt=""
+        sx={{ p: 0, m: 0 }}
+      />
+    </Card>
   );
 }

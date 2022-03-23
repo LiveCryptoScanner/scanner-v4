@@ -105,13 +105,17 @@ export default function IconTabs() {
 
   return (
     <Grid container direction="row" spacing={1}>
-      <Grid item xs={12}>
-        <Box sx={{border: 0, ml: 1}}>
-          <Box component="span" mt={2}>
-            <Typography variant="overline" sx={{fontSize: '1.3rem', mr: 5}}>
+      <Grid item xs={2}>
+        <Box sx={{border: 0, ml: 0}}>
+          <Box component="span">
+            <Typography variant="h4" component="overline">
               Scanner
             </Typography>
           </Box>
+        </Box>
+      </Grid>
+      <Grid item xs={10}>
+        <Box sx={{border: 0, ml: 0}}>
           <Button variant={selectedMainHomeButton.value === 'Standard' ? 'contained' : 'outlined'} startIcon={<Dashboard />} sx={{ marginRight: 3, width: 144 }}
             onClick={() => dispatch(setMainHomeButton( {name: 'Standard', value: 'Standard'} ))}>
             Standard
