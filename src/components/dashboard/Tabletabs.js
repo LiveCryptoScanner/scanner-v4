@@ -7,6 +7,7 @@ import Divider from '@mui/material/Divider';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
+import IconButton from '@mui/material/IconButton';
 import Paper from '@mui/material/Paper';
 import { Dashboard, Settings, Person } from '@mui/icons-material';
 
@@ -53,17 +54,23 @@ function IndicatorSettings({ selectedMainTab }) {
 function HomeSteppersView({ selectedMainHomeButton }) {
   if (selectedMainHomeButton.value === 'Standard') {
     return (
-      <Box sx={{flexGrow: 1}}>
+      <Box sx={{}}>
         <Grid container direction="row">
           <Grid item xs={12} md={8}>
             <MainTabs />
           </Grid>
           <Grid item xs={12} md={4}>
-            <Grid container direction="row" justifyContent="flex-end" alignItems="center">
-              <PairMenu />
-              <Exchange />
-              <DownloadIcon />
-              <ShareIcon />
+            <Grid container direction="row" justifyContent="flex-end" alignItems="center" spacing={{ xs: 1, md: 5 }}>
+              <Grid item xs={3} md={4}>
+                <PairMenu />
+              </Grid>
+              <Grid item xs={3} md={4}>
+                <Exchange />
+              </Grid>
+              <Grid item xs={2} md={4}>
+                <IconButton sx={{ml: 1}}><DownloadIcon /></IconButton>
+                <IconButton><ShareIcon /></IconButton>
+              </Grid>
             </Grid>
           </Grid>
         </Grid>
