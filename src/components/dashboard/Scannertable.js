@@ -2,12 +2,17 @@ import * as React from 'react';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Box';
 import Paper from '@mui/material/Box';
+import Button from '@mui/material/Button';
+import Link from '@mui/material/Link';
+import IconButton from '@mui/material/IconButton';
 import { DataGrid } from '@mui/x-data-grid';
 import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp';
 import Avatar from '@mui/material/Avatar';
 import Stack from '@mui/material/Stack';
 import StarPurple500Icon from '@mui/icons-material/StarPurple500';
 import StarRateIcon from '@mui/icons-material/StarRate';
+import DeleteIcon from '@mui/icons-material/Delete';
+import SvgIcon from '@mui/material/SvgIcon';
 
 const columns = [
   { field: 'WatchList',
@@ -48,7 +53,35 @@ const columns = [
   { field: 'Price', headerName: 'Price', width: 120,headerClassName:'tableheader', headerClassName:'tableheader', align: 'center', headerAlign: 'center', flex: 1},
   { field: '_24Hr', headerName: '%24Hr', width: 120,headerClassName:'tableheader', headerClassName:'tableheader', align: 'center', headerAlign: 'center', flex: 1},
   { field: 'Volume', headerName: 'Volume', width: 120,headerClassName:'tableheader', headerClassName:'tableheader', align: 'center', headerAlign: 'center', flex: 1},
-  { field: 'Chart', headerName: 'Chart', width: 120,headerClassName:'tableheader', headerClassName:'tableheader', align: 'center', headerAlign: 'center', flex: 1, sortable: false},
+  // { field: 'Chart', headerName: 'Chart', width: 120,headerClassName:'tableheader', headerClassName:'tableheader', align: 'center', headerAlign: 'center', flex: 1, sortable: false},
+
+  { field: 'Chart', headerName: 'Chart', width: 144, headerAlign: 'center',
+    headerClassName: 'pair-header-cell', flex: 1, sortable: false, align: 'center',
+    renderCell: (params) => {
+      return (
+        <>
+          <a href={params.value.url} target="_blank">
+            <Avatar src={params.value.imagePath}
+              sx={{ width: 21, height: 21, mr: 1 }}
+            />
+          </a>
+         </>
+      );
+    }},
+    { field: 'Filter', headerName: 'Filter', width: 144, headerAlign: 'center',
+      headerClassName: 'pair-header-cell', flex: 1, sortable: false, align: 'center',
+      renderCell: (params) => {
+        return (
+          <>
+            <Link color="inherit" underline="none" href={params.value.url} target="_blank">
+              <Button variant="outlined" size="small">
+                Trade
+              </Button>
+            </Link>
+           </>
+        );
+      }},
+  // { field: 'Filter', headerName: 'Filter', width: 120,headerClassName:'tableheader', headerClassName:'tableheader', align: 'center', headerAlign: 'center', flex: 1, sortable: false},
 ];
 
 // const rows = [
@@ -64,11 +97,11 @@ const columns = [
 const rows = [
   // { Pair: 1, M15: <ArrowDropUpIcon />, H1: 'Jon', H4: 35, H12: 1, D: 'Snow', W: 'Jon', Price: "$35", id: 1, Volume: 'Snow', Chart: 'Jon', M16: 35 },
   // { Pair: 1, M15: 99, H1: 'Jon', H4: 35, H12: 1, D: 'Snow', W: 'Jon', Price: "$35", id: 1, Volume: 'Snow', Chart: 'Jon', M16: 35 },
-  { id: 1, WatchList: { inWatchList: true }, Pair: { name: 'BTCUSD', imgPath: '/images/eth.png', inWatchList: true }, M15: 99, H1: '23', H4: 35, H12: 16, D: '55', W: '23', Price: "$35", _24Hr: 1, Volume: '4.3M', Chart: 'trading_view_chart',  },
-  { id: 2, WatchList: { inWatchList: false }, Pair: { name: 'ADAUSD', imgPath: '/images/eth.png', inWatchList: false }, M15: 42, H1: '55', H4: 35, H12: 11, D: '55', W: '23', Price: "$35", _24Hr: -10, Volume: '4.3M', Chart: 'trading_view_chart',  },
-  { id: 3, WatchList: { inWatchList: false }, Pair: { name: 'XRPUSD', imgPath: '/images/eth.png', inWatchList: false }, M15: 12, H1: '25', H4: 35, H12: 53, D: '55', W: '23', Price: "$35", _24Hr: 12, Volume: '4.3M', Chart: 'trading_view_chart',  },
-  { id: 4, WatchList: { inWatchList: false }, Pair: { name: 'KNCUSD', imgPath: '/images/eth.png', inWatchList: true }, M15: 63, H1: '62', H4: 35, H12: 66, D: '55', W: '23', Price: "$35", _24Hr: 0.06, Volume: '4.3M', Chart: 'trading_view_chart',  },
-  { id: 5, WatchList: { inWatchList: true }, Pair: { name: 'SHIBUSDTPERP', imgPath: '/images/eth.png', inWatchList: false }, M15: 25, H1: '84', H4: 35, H12: 85, D: '55', W: '23', Price: "$35", _24Hr: 1.74, Volume: '4.3M', Chart: 'trading_view_chart',  },
+  { id: 1, WatchList: { inWatchList: true }, Pair: { name: 'BTCUSD', imgPath: '/images/eth.png', inWatchList: true }, M15: 99, H1: '23', H4: 35, H12: 16, D: '55', W: '23', Price: "$35", _24Hr: 1, Volume: '4.3M', Chart: { imagePath: '/images/tv_logo_2.png', url: 'https://in.tradingview.com/chart/' }, Filter: {name: 'Trade', url: 'https://in.tradingview.com/chart/'} },
+  { id: 2, WatchList: { inWatchList: false }, Pair: { name: 'ADAUSD', imgPath: '/images/eth.png', inWatchList: false }, M15: 42, H1: '55', H4: 35, H12: 11, D: '55', W: '23', Price: "$35", _24Hr: -10, Volume: '4.3M', Chart: { imagePath: '/images/tv_logo_2.png', url: 'https://in.tradingview.com/chart/' }, Filter: {name: 'Trade', url: 'https://in.tradingview.com/chart/'} },
+  { id: 3, WatchList: { inWatchList: false }, Pair: { name: 'XRPUSD', imgPath: '/images/eth.png', inWatchList: false }, M15: 12, H1: '25', H4: 35, H12: 53, D: '55', W: '23', Price: "$35", _24Hr: 12, Volume: '4.3M', Chart: { imagePath: '/images/tv_logo_2.png', url: 'https://in.tradingview.com/chart/' }, Filter: {name: 'Trade', url: 'https://in.tradingview.com/chart/'} },
+  { id: 4, WatchList: { inWatchList: false }, Pair: { name: 'KNCUSD', imgPath: '/images/eth.png', inWatchList: true }, M15: 63, H1: '62', H4: 35, H12: 66, D: '55', W: '23', Price: "$35", _24Hr: 0.06, Volume: '4.3M', Chart: { imagePath: '/images/tv_logo_2.png', url: 'https://in.tradingview.com/chart/' }, Filter: {name: 'Trade', url: 'https://in.tradingview.com/chart/'} },
+  { id: 5, WatchList: { inWatchList: true }, Pair: { name: 'SHIBUSDTPERP', imgPath: '/images/eth.png', inWatchList: false }, M15: 25, H1: '84', H4: 35, H12: 85, D: '55', W: '23', Price: "$35", _24Hr: 1.74, Volume: '4.3M', Chart: { imagePath: '/images/tv_logo_2.png', url: 'https://in.tradingview.com/chart/' }, Filter: {name: 'Trade', url: 'https://in.tradingview.com/chart/'} },
 ];
 
 
